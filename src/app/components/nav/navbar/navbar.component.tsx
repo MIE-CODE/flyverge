@@ -10,11 +10,17 @@ import { WiDayCloudy } from "react-icons/wi";
 export const NavBar = (props: { visible: boolean }) => {
   const { logout, user } = useLayoutPageLogic();
   const divRef = useRef<HTMLDivElement | null>(null);
+  const toggleRef = useRef<HTMLSpanElement | null>(null);
   const [popup, setPopup] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (divRef.current && !divRef.current.contains(e.target as Node)) {
+      if (
+        toggleRef.current &&
+        divRef.current &&
+        !divRef.current.contains(e.target as Node) &&
+        !toggleRef.current.contains(e.target as Node)
+      ) {
         setPopup(false);
       }
     };
@@ -46,7 +52,7 @@ export const NavBar = (props: { visible: boolean }) => {
         <div className=" flex gap-2 items-center mt-auto  cursor-pointer ">
           <Avatar
             name={user?.name}
-            className="relative w-full max-w-[35px] h-[35px]"
+            className="relative w-full max-w-[35px] h-[35px] "
           />
           <div className="relative w-full ">
             <div className="flex items-center justify-between gap-3">
@@ -57,6 +63,7 @@ export const NavBar = (props: { visible: boolean }) => {
                 <p className="text-xs ">{user?.email ?? undefined}</p>
               </div>
               <span
+                ref={toggleRef}
                 onClick={() => {
                   setPopup((prev) => !prev);
                 }}
@@ -83,7 +90,7 @@ export const NavBar = (props: { visible: boolean }) => {
                 <div className="flex flex-col justify-center items-center gap-2">
                   <Avatar
                     name={user?.name}
-                    className="font-bold text-2xl mt-3"
+                    className="font-bold text-2xl mt-3 "
                   />
 
                   <p className="text-sm font-semibold">{user?.name}</p>
@@ -94,6 +101,7 @@ export const NavBar = (props: { visible: boolean }) => {
                     <Link
                       className="flex items-center gap-2 text-sm font-bold border border-slate-500 rounded px-2 py-1"
                       href="settings"
+                      onClick={() => setPopup(false)}
                     >
                       <span>
                         <FaCog />

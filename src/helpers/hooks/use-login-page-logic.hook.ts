@@ -25,7 +25,7 @@ export const useLoginLogic = () => {
       if (error) setErr(error.message);
       if (data) {
         dispatch(commitUser(data.user));
-        router.push("/");
+        router.push("/dashboard");
         Cookies.set("auth_token", data.token, { expires: 60 * 60 * 24 });
       }
     } catch (error: any) {
