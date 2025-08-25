@@ -3,8 +3,9 @@ import { NavBar } from "@/app/components/nav/navbar/navbar.component";
 import { NotificationModal } from "@/app/components/notification-modal/notification.modal";
 import { useLayoutPageLogic } from "@/helpers/hooks/use-layout-page-logic.hook";
 import { useAppSelector } from "@/redux/hooks";
+import classNames from "classnames";
 import { usePathname, useRouter } from "next/navigation";
-import { PropsWithChildren, useEffect } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import { FaBars, FaBell, FaChevronRight, FaMoon, FaSun } from "react-icons/fa";
 
 const BreadCrumb = () => {
@@ -40,16 +41,19 @@ const BreadCrumb = () => {
   return <div>{formatPath()}</div>;
 };
 export const Layout = (props: PropsWithChildren) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const { logout } = useLayoutPageLogic();
   const user = useAppSelector((state) => state.user);
   if (!user) {
     return null;
   }
-
+  const toggleSidebar = () => {
+    setSidebarOpen((prev) => !prev);
+  };
   return (
     <div className="flex flex-col ">
       <div className="flex items-center gap-8 border-b border-slate-500 px-6 py-6  md:px-5 md:py-3 w-full  fixed top-0 left-0  z-50 bg-background shadow-[_0px_1px_10px_#333]">
-        <FaBars size={19} className="md:hidden" />
+        <FaBars size={19} className="lg:hidden" onClick={toggleSidebar} />
         <p className="text-bold text-blue-300 text-2xl w-[230px] hidden md:block">
           Flyverge
         </p>
@@ -65,9 +69,15 @@ export const Layout = (props: PropsWithChildren) => {
       </div>
 
       <div className="flex">
-        <NavBar visible />
+        <NavBar visible={sidebarOpen} />
         <div className=" flex  w-full pt-[76px] px-6 pb-4  ">
-          <div className="w-full border border-slate-500 rounded-lg p-5 ">
+          <div
+            className={classNames(
+              `flex-1 transition-all duration-300 w-full border border-slate-500 rounded-lg p-5 ${
+                sidebarOpen ? "lg:ml-[230px]" : "lg:ml-[230px] md:ml-0"
+              }`
+            )}
+          >
             {props.children}
           </div>
         </div>

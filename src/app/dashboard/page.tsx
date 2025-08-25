@@ -92,7 +92,7 @@ export default function Dashboard() {
         </motion.div>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-4 gap-6 mb-10">
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="bg-[#1f1f1f] p-5 rounded-xl shadow-md"

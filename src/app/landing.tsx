@@ -11,13 +11,13 @@ import {
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#171717] text-white">
-      <section className="w-full flex items-end justify-end py-2 px-4">
+      <section className="w-full flex md:items-end md:justify-end py-2 px-4">
         <motion.a
           href="/auth/login"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-8 bg-blue-600 hover:bg-blue-500 px-8 py-2 rounded-xl text-lg font-semibold shadow-lg"
+          className="mt-8 bg-blue-600 hover:bg-blue-500 px-4 py-1 rounded-xl text-lg font-semibold shadow-lg"
         >
           Login
         </motion.a>
