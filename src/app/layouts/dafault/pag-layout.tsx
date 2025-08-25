@@ -3,9 +3,42 @@ import { NavBar } from "@/app/components/nav/navbar/navbar.component";
 import { NotificationModal } from "@/app/components/notification-modal/notification.modal";
 import { useLayoutPageLogic } from "@/helpers/hooks/use-layout-page-logic.hook";
 import { useAppSelector } from "@/redux/hooks";
-import { PropsWithChildren } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { PropsWithChildren, useEffect } from "react";
 import { FaBars, FaBell, FaChevronRight, FaMoon, FaSun } from "react-icons/fa";
 
+const BreadCrumb = () => {
+  const route = useRouter();
+  const path = usePathname();
+  function formatPath() {
+    return path
+      .split("/")
+      .map((segment, index, arr) => {
+        if (index === 0) return null;
+        if (index === arr.length - 1) {
+          return (
+            <p key={index} className="text-sm text-gray-300">
+              {segment.charAt(0).toUpperCase() + segment.slice(1)}
+            </p>
+          );
+        }
+        return (
+          <div
+            key={index}
+            className="flex gap-2 items-center cursor-pointer"
+            onClick={() => route.push(`/${segment}`)}
+          >
+            <p className="text-sm text-slate-50 font-bold">{segment}</p>
+            <span className="text-slate-300">
+              <FaChevronRight size={12} />
+            </span>
+          </div>
+        );
+      })
+      .filter(Boolean);
+  }
+  return <div>{formatPath()}</div>;
+};
 export const Layout = (props: PropsWithChildren) => {
   const { logout } = useLayoutPageLogic();
   const user = useAppSelector((state) => state.user);
@@ -22,11 +55,7 @@ export const Layout = (props: PropsWithChildren) => {
         </p>
         <div className="md:ml-10 w-full flex items-center justify-between">
           <div className="flex gap-2 items-center">
-            <p className="text-sm text-slate-50 font-bold">Flights</p>
-            <span className="text-slate-300">
-              <FaChevronRight size={12} />
-            </span>
-            <p className="text-sm text-gray-300">Create</p>
+            <BreadCrumb />
           </div>
           <div className="flex gap-3 items-center">
             <FaSun className="text-yellow-300 cursor-pointer" size={19} />

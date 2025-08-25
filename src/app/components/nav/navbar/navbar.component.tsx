@@ -50,10 +50,10 @@ export const NavBar = (props: { visible: boolean }) => {
           <NavList />
         </div>
         <div className=" flex gap-2 items-center mt-auto  cursor-pointer ">
-          <Avatar
+          {/* <Avatar
             name={user?.name}
             className="relative w-full max-w-[35px] h-[35px] "
-          />
+          /> */}
           <div className="relative w-full ">
             <div className="flex items-center justify-between gap-3">
               <div className=" flex flex-col">

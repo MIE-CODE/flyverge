@@ -12,7 +12,7 @@ const getSocketClient = () => {
   }
   if (!_client) {
     token = _token;
-    _client = io("http://localhost:8585", {
+    _client = io("https://airline-server-2h55.onrender.com", {
       transports: ["websocket"],
       query: {
         authorization: token,

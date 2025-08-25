@@ -27,6 +27,7 @@ export const useAnnouncementLogic = () => {
 
       socket.on("connect_error", (err) => {
         console.error("Socket connection error:", err);
+        return;
       });
     }
   }, [socket]);
