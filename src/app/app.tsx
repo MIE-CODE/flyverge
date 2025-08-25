@@ -91,7 +91,7 @@ export default function ExplorePage() {
         <h2 className="text-3xl font-bold mb-8 text-center">
           Popular Destinations
         </h2>
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {destinations.map((dest, idx) => (
             <motion.div
               key={idx}
@@ -126,7 +126,7 @@ export default function ExplorePage() {
         <h2 className="text-3xl font-bold text-center mb-8">
           Exclusive Flight Offers
         </h2>
-        <div className="flex flex-col md:flex-row justify-center gap-6">
+        <div className="flex flex-col md:flex-row justify-center flex-wrap gap-6">
           {flightOffers.map((offer, idx) => (
             <motion.div
               key={idx}
@@ -157,7 +157,7 @@ export default function ExplorePage() {
         <h2 className="text-3xl font-bold text-center mb-8">
           Travel Tips & Guides
         </h2>
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {[
             {
               title: "5 Hacks to Save on Flights",
