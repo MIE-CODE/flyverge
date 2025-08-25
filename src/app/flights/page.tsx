@@ -37,7 +37,7 @@ export default function Flights() {
   const [travelClass, setTravelClass] = useState<string>("Economy");
   return (
     <Layout>
-      <div className="min-h-screen bg-[#171717] text-[#ffffff] px-6 py-10">
+      <div className="min-h-screen bg-[#171717] text-[#ffffff] px-2 py-4 sm:px-6 sm:py-10">
         {/* Header */}
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
@@ -143,7 +143,7 @@ export default function Flights() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="bg-[#1f1f1f] rounded-xl shadow-lg p-6 hover:shadow-xl transition"
+              className="bg-[#1f1f1f] rounded-xl shadow-lg md:p-6 p-3 hover:shadow-xl transition"
             >
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xl font-bold">{flight.airline}</h3>

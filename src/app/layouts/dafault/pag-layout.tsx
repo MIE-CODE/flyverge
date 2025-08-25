@@ -73,7 +73,7 @@ export const Layout = (props: PropsWithChildren) => {
         <div className=" flex  w-full pt-[76px] px-6 pb-4  ">
           <div
             className={classNames(
-              `flex-1 transition-all duration-300 w-full border border-slate-500 rounded-lg p-5 ${
+              `flex-1 transition-all duration-300 w-full border border-slate-500 rounded-lg md:p-5 p-2 ${
                 sidebarOpen ? "lg:ml-[230px]" : "lg:ml-[230px] md:ml-0"
               }`
             )}
