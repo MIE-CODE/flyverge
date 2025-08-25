@@ -131,6 +131,9 @@ export default function LandingPage() {
               transition={{ duration: 0.4, delay: i * 0.1 }}
               className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer"
             >
+              <div className="absolute bg-background/25 rounded-xl py-1 px-2 m-3 font-bold text-[#f8f8f8] text-sm md:hidden">
+                {dest.name}
+              </div>
               <img
                 src={dest.image}
                 alt={dest.name}
